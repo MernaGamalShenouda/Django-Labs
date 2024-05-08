@@ -1,9 +1,7 @@
 {% extends 'main/base_layout.html' %}
 
-{# override block title #}
-
 {% block title %}
-Todo book detail
+Book detail
 {% endblock %}
 
 {% block main-content %}
@@ -32,12 +30,6 @@ Todo book detail
     </tbody>
 
 </table>
-
-{% if book_priority > 3 %}
-<h1> Hight</h1>
-{% else %}
-<h1> Low </h1>
-{% endif %}
 
 {% endblock %}
 
