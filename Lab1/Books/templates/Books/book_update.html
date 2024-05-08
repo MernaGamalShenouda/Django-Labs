@@ -1,0 +1,36 @@
+{% extends 'main/base_layout.html' %}
+
+{% block title %}
+Update book detail
+{% endblock %}
+
+{% block main-content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group p-3">
+                    <label for="title">Title:</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ book_object.title }}">
+                </div>
+                <div class="form-group p-3">
+                    <label for="author">Author:</label>
+                    <input type="text" class="form-control" id="author" name="author" value="{{ book_object.author }}">
+                </div>
+                <div class="form-group p-3">
+                    <label for="genre">Genre:</label>
+                    <input type="text" class="form-control" id="genre" name="genre" value="{{ book_object.genre }}">
+                </div>
+                <div class="form-group p-3">
+                    <label for="description">Description:</label>
+                    <textarea class="form-control" id="description" name="description">{{ book_object.description }}</textarea>
+                </div>
+                <div class="p-3">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
