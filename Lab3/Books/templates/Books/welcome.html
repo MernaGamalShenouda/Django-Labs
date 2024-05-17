@@ -1,0 +1,22 @@
+{% extends 'main/base_layout.html' %}
+
+{% block title %}
+Welcome to Our Bookstore
+{% endblock %}
+
+{% block main-content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to Our Bookstore</h1>
+    <p class="lead">Discover a world of stories.</p>
+    <hr class="my-4">
+    <p>Explore our collection and find your next adventure.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'Books:books-index' %}" role="button">Browse Books</a>
+</div>
+{% endblock %}
+
+
+
+
+
+
+

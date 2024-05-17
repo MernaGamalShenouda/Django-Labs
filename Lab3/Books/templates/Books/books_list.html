@@ -1,0 +1,51 @@
+{% extends 'main/base_layout.html' %}
+
+{% block title %}
+   Books List
+{% endblock %}
+
+{% block main-content %}
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <td> ID </td>
+            <td> Title </td>
+            <td> Author </td>
+            <td> Category </td>
+            <td> Rate </td>
+            <td> Actions </td>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for book in books_list %}
+        <tr> 
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.user.username }}</td>  {# Accessing the author's username assuming 'user' is the ForeignKey to the User model #}
+            <td>
+                {% for category in book.categories.all %}
+                    {{ category.name }}
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </td>  
+            <td>{{ book.rate }}</td>
+            <td>
+                <a class="btn btn-info" href="{% url 'Books:book-deatil' book.id %}"> View </a>
+                <a class="btn btn-info" href="{% url 'Books:book-update' book.id %}"> Update </a>
+                <a class="btn btn-info" href="{% url 'Books:book-delete' book.id %}"> Delete </a>
+            </td>
+
+        </tr>
+         {% empty %}
+         <tr>
+            <td colspan="3" class="text-center"> sorry, no book in list</td>
+         </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+<a href="{% url 'Books:logout' %}">Logout</a>
+
+{% endblock %}
